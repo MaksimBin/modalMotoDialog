@@ -1,14 +1,61 @@
-let images = [
-  "pngwing.com (13).png",
-  "pngwing.com (14).png",
-  "pngwing.com (15).png",
-  "pngwing.com (12).png"
-  ]
+
+var images = [];
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
+
+//-- usage --//
+preload(
+      "/pngwing.com (13).png",
+      "/pngwing.com (14).png",
+      "/pngwing.com (15).png",
+      "/pngwing.com (12).png"
+)
+
+
+let audios = []
+let audio = new Audio("/Alec_Koff_-_Second_Law_(musmore.org).mp3")
+
+audio.oncanplaythrough = isAppLoaded;
+
+function isAppLoaded() {
+   audios.push(audio.src)
+}
+
+let btn = document.querySelector('.startButton')
+btn.disabled = true
+btn.innerHTML = "Загрузка..."
+  const bt = () => {
+  
+  
+    if (images.length == 4 && audios.length == 1) {
+      btn.disabled = false
+      btn.innerHTML = "Start"
+    } else {
+      btn.disabled = true
+      btn.innerHTML = "Загрузка..."
+    }
+    
+    console.log(images.length)
+  }
+  
+  
+  setInterval(() => {
+    bt()
+  }, 3000)
+  
+  
+  
   
   let numbers = 0
   
   
-  let audio = new Audio("Alec_Koff_-_Second_Law_(musmore.org).mp3")
+  
+  
+  
   
   const audioPlay = () => {
     audio.play()
@@ -16,6 +63,8 @@ let images = [
   
   
   const startDisplay = () => {
+    
+    
     
     
     document.querySelector('.preloader').style = "opacity: 0.0; transition-duration: 2s;"
@@ -30,7 +79,7 @@ let images = [
   }
 
 setInterval(() => {
-  document.querySelector('.content').style = `background-image: url('${images[getImages(numbers)]}');background-repeat: no-repeat;background-size: contain;background-position: center;`
+  document.querySelector('.content').style = `background-image: url('${images[getImages(numbers)].src}');background-repeat: no-repeat;background-size: contain;background-position: center;`
   
 }, 1000)
 
@@ -43,11 +92,6 @@ const getImages = () => {
     return numbers++
   }
 }
-
-
-
-
-
 
 
 document.querySelector('.content-el').style = "display: none;"
@@ -75,8 +119,6 @@ const openModal = () => {
   }, 4000)
 }
 
-
-
 const closeModal = () => {
  
   document.querySelector('.content-el').style = "margin-left:900px;transition-duration: 2s;"
@@ -90,3 +132,13 @@ setTimeout(() => {
   }, 3000)
 
 }
+
+
+
+
+
+
+
+
+
+
