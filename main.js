@@ -9,15 +9,15 @@ function preload() {
 
 //-- usage --//
 preload(
-      "/pngwing.com (13).png",
-      "/pngwing.com (14).png",
-      "/pngwing.com (15).png",
-      "/pngwing.com (12).png"
+      "pngwing.com (13).png",
+      "pngwing.com (14).png",
+      "pngwing.com (15).png",
+      "pngwing.com (12).png"
 )
 
 
 let audios = []
-let audio = new Audio("/Alec_Koff_-_Second_Law_(musmore.org).mp3")
+let audio = new Audio("Alec_Koff_-_Second_Law_(musmore.org).mp3")
 
 audio.oncanplaythrough = isAppLoaded;
 
